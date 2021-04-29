@@ -1,0 +1,71 @@
+---
+title: "pierwsze_zajecia"
+author: "Wladyslaw Turczanski"
+date: "26/04/2021"
+output: html_document
+---
+
+Wariacją bez powtórzeń $k$-wyrazową zbioru $n$-elementowego $A(1 \leq k \leq n)$
+nazywa się każdy $k$-wyrazowy ciąg $k$ różnych elementóW tego zbioru
+
+$V^{k}_{n} = \frac{n!}{(n-k)!}$
+
+Dodatkowo przypomnienie: $0! = 1$
+
+```{r}
+library(gtools)
+
+urn <- c('a', 'b', 'c')
+war_bez_powt <- permutations(n = length(urn), r = 2, v = urn, repeats.allowed = FALSE)
+war_bez_powt
+```
+Widzimy, że ilość takich wariacji to:
+```{r}
+nrow(war_bez_powt)
+factorial(length(urn))/factorial(length(urn) - 3)
+```
+
+a korzystając ze wzoru: $ \frac{3!}{(3-3)!}=\frac{3!}{0!}=3!=6$
+
+
+Wariacją z powtórzeniami $k$-wyrazową zbioru $n$-elementowego $A$
+nazywa się każdy $k$-wyrazowy ciąg elementóW tego zbioru
+
+$\bar{V}^{k}_{n} = n!$
+
+```{r}
+urn <- c('a', 'b', 'c')
+war_Z_powt <- permutations(n = length(urn), r = 2, v = urn, repeats.allowed = TRUE)
+war_Z_powt
+```
+Widzimy, że ilość takich wariacji to:
+```{r}
+nrow(war_Z_powt)
+factorial(length(urn))
+```
+
+Permutacją bez powtórzeń zbioru $n$-elementowego, nazywamy każdy 
+$n$-wyrazowy ciąg utworzony ze wszystkich elementów tego zbioru
+(szczególny przypadek wariacji bez powtórzeń dla $k=n$)
+
+$P_{n}=n!$
+```{r}
+urn <- c('a', 'b', 'c')
+per_bez_powt <- permutations(n = length(urn), r = length(urn), v = urn, repeats.allowed = FALSE)
+per_bez_powt
+```
+
+Permutacją n-elementową z powtórzeniami zbioru X = {x1, x2, x3,...,xk}
+w której x1 występuje n1 razy, x2 występuje n2 razy itd. oraz 
+n1 + n2+ ... + nk = n nazywamy każdy n-wyrazowy ciąg, w którym xi
+występuje ni razy dla i= 1, 2, ..., k.
+
+$P^{n_{1},n_{2},...,n_{k}}_{n}=\frac{n!}{n_{1}!*n_{2}!*...*n_{k}!}$
+
+```{r}
+factorial(3)/(factorial(2)*factorial(1)*factorial(0))
+```
+
+
+
+
