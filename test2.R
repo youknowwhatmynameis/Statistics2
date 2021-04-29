@@ -20,3 +20,4 @@ mean(Centrala$Liczba)
 median(Centrala$Liczba)
 sd(Centrala$Liczba)
 sd(Centrala$Liczba)/mean(Centrala$Liczba)*100
+
